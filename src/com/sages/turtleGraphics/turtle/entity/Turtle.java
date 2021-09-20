@@ -4,6 +4,23 @@ public class Turtle {
     private Pen pen;
     private int xCoordinate;
     private int yCoordinate;
+
+    public int getxCoordinate() {
+        return xCoordinate;
+    }
+
+    public void setxCoordinate(int xCoordinate) {
+        this.xCoordinate = xCoordinate;
+    }
+
+    public int getyCoordinate() {
+        return yCoordinate;
+    }
+
+    public void setyCoordinate(int yCoordinate) {
+        this.yCoordinate = yCoordinate;
+    }
+
     private CardinalPoint direction;
     private String name;
     public Turtle(String name){
@@ -16,7 +33,7 @@ public class Turtle {
         return direction;
     }
 
-    private void setDirection(CardinalPoint direction) {
+    public void setDirection(CardinalPoint direction) {
         this.direction = direction;
     }
 
@@ -50,7 +67,17 @@ public class Turtle {
         }
     }
 
-    public void moveForward(){
-
+    public void moveForward(int numberOfSteps){
+        if(direction.equals(CardinalPoint.EAST)){
+            xCoordinate += numberOfSteps-1;
+        }else
+        if(direction.equals(CardinalPoint.SOUTH)){
+            yCoordinate += numberOfSteps-1;
+        }else if (direction.equals(CardinalPoint.WEST)) {
+            xCoordinate -= numberOfSteps-1;
+        }else
+            if(direction.equals(CardinalPoint.NORTH)){
+                yCoordinate -= numberOfSteps-1;
+            }
     }
 }

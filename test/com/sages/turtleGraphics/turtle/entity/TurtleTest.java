@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TurtleTest {
@@ -111,6 +113,59 @@ class TurtleTest {
         assertEquals(CardinalPoint.SOUTH,ijapa.getDirection());
         ijapa.turnLeft();
         assertEquals(CardinalPoint.EAST,ijapa.getDirection());
+    }
+
+    @Test
+    void moveForwadrfromEast(){
+        assertEquals(BigDecimal.ZERO.intValue(),ijapa.getxCoordinate());
+        assertEquals(BigDecimal.ZERO.intValue(),ijapa.getyCoordinate());
+        ijapa.moveForward(12);
+        assertEquals(11,ijapa.getxCoordinate());
+        assertEquals(0,ijapa.getyCoordinate());
+    }
+
+    @Test
+    void moveForwadFromSouth(){
+        ijapa.setDirection(CardinalPoint.SOUTH);
+        assertEquals(BigDecimal.ZERO.intValue(),ijapa.getxCoordinate());
+        assertEquals(BigDecimal.ZERO.intValue(),ijapa.getyCoordinate());
+        ijapa.moveForward(12);
+        assertEquals(0,ijapa.getxCoordinate());
+        assertEquals(11,ijapa.getyCoordinate());
+    }
+
+    @Test
+    void moveForwadFromWest(){
+        ijapa.setDirection(CardinalPoint.WEST);
+        ijapa.setxCoordinate(11);
+        assertEquals(11,ijapa.getxCoordinate());
+        assertEquals(BigDecimal.ZERO.intValue(),ijapa.getyCoordinate());
+        ijapa.moveForward(12);
+        assertEquals(0,ijapa.getxCoordinate());
+        assertEquals(0,ijapa.getyCoordinate());
+    }
+
+
+    @Test
+    void moveForwadFromNorth(){
+        ijapa.setDirection(CardinalPoint.NORTH);
+        ijapa.setyCoordinate(11);
+        assertEquals(0,ijapa.getxCoordinate());
+        assertEquals(11,ijapa.getyCoordinate());
+        ijapa.moveForward(12);
+        assertEquals(0,ijapa.getxCoordinate());
+        assertEquals(0,ijapa.getyCoordinate());
+    }
+
+    @Test
+    void moveForwadFromEastWithExccessStep(){
+        assertEquals(CardinalPoint.EAST,ijapa.getDirection());
+        ijapa.setxCoordinate(10);
+        assertEquals(10,ijapa.getxCoordinate());
+        assertEquals(BigDecimal.ZERO.intValue(),ijapa.getyCoordinate());
+        ijapa.moveForward(12);
+        assertEquals(10,ijapa.getxCoordinate());
+        assertEquals(0,ijapa.getyCoordinate());
     }
 
 }
